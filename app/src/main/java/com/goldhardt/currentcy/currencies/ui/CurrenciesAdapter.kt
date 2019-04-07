@@ -1,14 +1,14 @@
-package com.goldhardt.currentcy
+package com.goldhardt.currentcy.currencies.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.goldhardt.core.Currency
-import com.goldhardt.core.Flags
+import com.goldhardt.core.data.currency.Currency
+import com.goldhardt.core.data.currency.Flags
+import com.goldhardt.currentcy.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_currency.*
-import java.lang.IllegalArgumentException
 
 class CurrenciesAdapter : RecyclerView.Adapter<CurrenciesAdapter.CurrencyViewHolder>() {
 

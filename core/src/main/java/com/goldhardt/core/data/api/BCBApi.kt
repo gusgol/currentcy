@@ -1,4 +1,4 @@
-package com.goldhardt.core
+package com.goldhardt.core.data.api
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient

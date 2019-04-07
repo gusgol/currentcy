@@ -1,4 +1,4 @@
-package com.goldhardt.core
+package com.goldhardt.core.data
 
 sealed class Result<out T : Any> {
 

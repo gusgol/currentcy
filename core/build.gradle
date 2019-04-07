@@ -62,6 +62,7 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
     api "com.google.code.gson:gson:${versions.gson}"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+    api "org.koin:koin-android-viewmodel:${versions.koin}"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

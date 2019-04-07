@@ -1,7 +1,8 @@
-package com.goldhardt.currentcy
+package com.goldhardt.currentcy.currencies.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.goldhardt.currentcy.currencies.data.CurrenciesRepository
 
 class CurrenciesViewModelFactory constructor(
         private val repository: CurrenciesRepository

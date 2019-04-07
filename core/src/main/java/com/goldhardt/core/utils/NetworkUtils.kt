@@ -1,5 +1,6 @@
-package com.goldhardt.core
+package com.goldhardt.core.utils
 
+import com.goldhardt.core.data.Result
 import java.io.IOException
 
 suspend fun <T : Any> safeApiCall(call: suspend () -> Result<T>, errorMessage: String): Result<T> {

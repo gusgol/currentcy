@@ -1,4 +1,4 @@
-package com.goldhardt.currentcy
+package com.goldhardt.currentcy.currencies.ui
 
 
 import android.os.Bundle
@@ -11,9 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.goldhardt.core.BCBApi
-import com.goldhardt.core.Currency
-import com.goldhardt.core.CurrencyService
+import com.goldhardt.core.data.api.BCBApi
+import com.goldhardt.core.data.currency.Currency
+import com.goldhardt.core.data.currency.CurrencyService
+import com.goldhardt.currentcy.R
+import com.goldhardt.currentcy.currencies.data.CurrenciesRemoteDataSource
+import com.goldhardt.currentcy.currencies.data.CurrenciesRepository
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_currencies.*
 
@@ -51,11 +54,11 @@ class CurrenciesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, CurrenciesViewModelFactory(
-            CurrenciesRepository(
-                    CurrenciesRemoteDataSource(
-                            BCBApi.get().create(CurrencyService::class.java)
-                    )
-            )
+                CurrenciesRepository(
+                        CurrenciesRemoteDataSource(
+                                BCBApi.get().create(CurrencyService::class.java)
+                        )
+                )
         ))[CurrenciesViewModel::class.java]
         viewModel.currencies.observe(this, Observer<List<Currency>> {
             currenciesAdapter.currencies = it

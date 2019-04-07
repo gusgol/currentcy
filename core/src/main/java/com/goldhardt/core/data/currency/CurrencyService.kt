@@ -1,5 +1,6 @@
-package com.goldhardt.core
+package com.goldhardt.core.data.currency
 
+import com.goldhardt.core.data.api.BCBResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET

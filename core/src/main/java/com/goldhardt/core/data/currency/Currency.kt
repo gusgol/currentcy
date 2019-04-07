@@ -1,4 +1,4 @@
-package com.goldhardt.core
+package com.goldhardt.core.data.currency
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

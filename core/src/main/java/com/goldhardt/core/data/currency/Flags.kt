@@ -1,4 +1,6 @@
-package com.goldhardt.core
+package com.goldhardt.core.data.currency
+
+import com.goldhardt.core.R
 
 enum class Flags(val resourceId: Int) {
     AUD(R.drawable.ic_aus),

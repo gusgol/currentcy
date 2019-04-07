@@ -1,7 +1,7 @@
-package com.goldhardt.currentcy
+package com.goldhardt.currentcy.currencies.data
 
-import com.goldhardt.core.Currency
-import com.goldhardt.core.Result
+import com.goldhardt.core.data.Result
+import com.goldhardt.core.data.currency.Currency
 
 class CurrenciesRepository(private val remoteDataSource: CurrenciesRemoteDataSource) {
     suspend fun getCurrencies(): Result<List<Currency>> {

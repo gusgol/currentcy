@@ -1,12 +1,13 @@
-package com.goldhardt.currentcy
+package com.goldhardt.currentcy.currencies.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.goldhardt.core.Currency
-import com.goldhardt.core.Result
-import com.goldhardt.core.SingleLiveEvent
+import com.goldhardt.core.data.Result
+import com.goldhardt.core.data.currency.Currency
+import com.goldhardt.core.utils.SingleLiveEvent
+import com.goldhardt.currentcy.currencies.data.CurrenciesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

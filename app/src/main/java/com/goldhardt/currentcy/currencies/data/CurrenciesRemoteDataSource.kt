@@ -1,9 +1,9 @@
-package com.goldhardt.currentcy
+package com.goldhardt.currentcy.currencies.data
 
-import com.goldhardt.core.Currency
-import com.goldhardt.core.CurrencyService
-import com.goldhardt.core.Result
-import com.goldhardt.core.safeApiCall
+import com.goldhardt.core.data.Result
+import com.goldhardt.core.data.currency.Currency
+import com.goldhardt.core.data.currency.CurrencyService
+import com.goldhardt.core.utils.safeApiCall
 import java.io.IOException
 
 class CurrenciesRemoteDataSource(private val service: CurrencyService) {

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/root"
-    tools:context=".CurrenciesFragment">
+    tools:context=".currencies.ui.CurrenciesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/currencies"
