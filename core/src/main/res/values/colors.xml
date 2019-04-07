@@ -5,7 +5,7 @@
     <color name="grey_dark">#1b1b1b</color>
     <color name="grey_light">#6d6d6d</color>
 
-    <color name="cyan">#0097a7</color>
-    <color name="cyan_dark">#006978</color>
-    <color name="cyan_light">#56c8d8</color>
+    <color name="cyan">#61c5a8</color>
+    <color name="cyan_dark">#2a9479</color>
+    <color name="cyan_light">#94f8d9</color>
 </resources>

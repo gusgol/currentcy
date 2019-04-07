@@ -2,18 +2,19 @@ package com.goldhardt.currentcy
 
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.goldhardt.core.BCBApi
 import com.goldhardt.core.Currency
 import com.goldhardt.core.CurrencyService
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_currencies.*
 
 /**
@@ -37,7 +38,8 @@ class CurrenciesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         currenciesAdapter = CurrenciesAdapter().apply {
             onClick = { currency ->
-                Snackbar.make(root, currency.name, Snackbar.LENGTH_LONG).show()
+//                Snackbar.make(root, currency.name, Snackbar.LENGTH_LONG).show()
+                showError()
             }
         }
         currencies.apply {
@@ -57,10 +59,24 @@ class CurrenciesFragment : Fragment() {
         ))[CurrenciesViewModel::class.java]
         viewModel.currencies.observe(this, Observer<List<Currency>> {
             currenciesAdapter.currencies = it
+            currencies.visibility = View.VISIBLE
         })
         viewModel.error.observe(this, Observer {
-            Snackbar.make(root, "Failed", Snackbar.LENGTH_LONG).show()
+            showError()
         })
         viewModel.getCurrencies()
+    }
+
+    private fun showError() {
+        currencies.visibility = View.GONE
+        layoutInflater.inflate(R.layout.view_error, root).apply {
+            this.findViewById<MaterialButton>(R.id.tryAgain).setOnClickListener {
+                viewModel.getCurrencies()
+                root.removeView(this)
+            }
+            this.findViewById<ImageView>(R.id.image).apply {
+                startAnimation(AnimationUtils.loadAnimation(context, R.anim.shake))
+            }
+        }
     }
 }
