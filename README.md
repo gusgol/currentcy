@@ -6,7 +6,7 @@ Showcase and experiment new Android features
 
 - [x] Arch: MVVM, Coroutines
 - [ ] Tests
-- [ ] Koin
+- [x] Koin
 - [ ] Dynamic Delivery, Instant Run
 
 ## Icons:

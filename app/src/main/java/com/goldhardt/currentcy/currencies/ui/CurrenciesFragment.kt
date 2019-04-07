@@ -9,16 +9,12 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.goldhardt.core.data.api.BCBApi
 import com.goldhardt.core.data.currency.Currency
-import com.goldhardt.core.data.currency.CurrencyService
 import com.goldhardt.currentcy.R
-import com.goldhardt.currentcy.currencies.data.CurrenciesRemoteDataSource
-import com.goldhardt.currentcy.currencies.data.CurrenciesRepository
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_currencies.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -29,7 +25,7 @@ class CurrenciesFragment : Fragment() {
         fun newInstance(): CurrenciesFragment = CurrenciesFragment()
     }
 
-    private lateinit var viewModel: CurrenciesViewModel
+    val currenciesViewModel: CurrenciesViewModel by viewModel()
     private lateinit var currenciesAdapter: CurrenciesAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -53,28 +49,21 @@ class CurrenciesFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, CurrenciesViewModelFactory(
-                CurrenciesRepository(
-                        CurrenciesRemoteDataSource(
-                                BCBApi.get().create(CurrencyService::class.java)
-                        )
-                )
-        ))[CurrenciesViewModel::class.java]
-        viewModel.currencies.observe(this, Observer<List<Currency>> {
+        currenciesViewModel.currencies.observe(this, Observer<List<Currency>> {
             currenciesAdapter.currencies = it
             currencies.visibility = View.VISIBLE
         })
-        viewModel.error.observe(this, Observer {
+        currenciesViewModel.error.observe(this, Observer {
             showError()
         })
-        viewModel.getCurrencies()
+        currenciesViewModel.getCurrencies()
     }
 
     private fun showError() {
         currencies.visibility = View.GONE
         layoutInflater.inflate(R.layout.view_error, root).apply {
             this.findViewById<MaterialButton>(R.id.tryAgain).setOnClickListener {
-                viewModel.getCurrencies()
+                currenciesViewModel.getCurrencies()
                 root.removeView(this)
             }
             this.findViewById<ImageView>(R.id.image).apply {
